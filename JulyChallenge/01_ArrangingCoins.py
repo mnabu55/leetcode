@@ -33,15 +33,17 @@ from typing import List
 
 class Solution:
     def arrangeCoins(self, n: int) -> int:
-        if n ==0:
-            return 0
-
-        number_coins = 1
-        number_rows = 1
-        while number_coins + number_rows + 1 <= n:
-            number_rows += 1
-            number_coins += number_rows
-        return number_rows
+        left, right = 0, n
+        while left <= right:
+            k = (left + right) // 2
+            number_coins_of_k_stairs = k * (k + 1) // 2
+            if number_coins_of_k_stairs == n:
+                return k
+            elif n < number_coins_of_k_stairs:
+                right = k - 1
+            else:
+                left = k + 1
+        return right
 
 
 ins = Solution()
