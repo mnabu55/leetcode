@@ -1,0 +1,49 @@
+'''
+You have a total of n coins that you want to form in a staircase shape, where every k-th row must have exactly k coins.
+
+Given n, find the total number of full staircase rows that can be formed.
+
+n is a non-negative integer and fits within the range of a 32-bit signed integer.
+
+Example 1:
+
+n = 5
+
+The coins can form the following rows:
+¤
+¤ ¤
+¤ ¤
+
+Because the 3rd row is incomplete, we return 2.
+Example 2:
+
+n = 8
+
+The coins can form the following rows:
+¤
+¤ ¤
+¤ ¤ ¤
+¤ ¤
+
+Because the 4th row is incomplete, we return 3.
+'''
+
+from typing import List
+
+
+class Solution:
+    def arrangeCoins(self, n: int) -> int:
+        if n ==0:
+            return 0
+
+        number_coins = 1
+        number_rows = 1
+        while number_coins + number_rows + 1 <= n:
+            number_rows += 1
+            number_coins += number_rows
+        return number_rows
+
+
+ins = Solution()
+assert ins.arrangeCoins(5) == 2, "case 1 ng"
+assert ins.arrangeCoins(8) == 3, "case 2 ng"
