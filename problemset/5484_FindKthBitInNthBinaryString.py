@@ -1,40 +1,17 @@
 '''
-Given a string s of lower and upper case English letters.
+Given two positive integers n and k, the binary string  Sn is formed as follows:
 
-A good string is a string which doesn't have two adjacent characters s[i] and s[i + 1] where:
+S1 = "0"
+Si = Si-1 + "1" + reverse(invert(Si-1)) for i > 1
+Where + denotes the concatenation operation, reverse(x) returns the reversed string x, and invert(x) inverts all the bits in x (0 changes to 1 and 1 changes to 0).
 
-0 <= i <= s.length - 2
-s[i] is a lower-case letter and s[i + 1] is the same letter but in upper-case or vice-versa.
-To make the string good, you can choose two adjacent characters that make the string bad and remove them. You can keep doing this until the string becomes good.
+For example, the first 4 strings in the above sequence are:
 
-Return the string after making it good. The answer is guaranteed to be unique under the given constraints.
-
-Notice that an empty string is also good.
-
-
-
-Example 1:
-
-Input: s = "leEeetcode"
-Output: "leetcode"
-Explanation: In the first step, either you choose i = 1 or i = 2, both will result "leEeetcode" to be reduced to "leetcode".
-Example 2:
-
-Input: s = "abBAcC"
-Output: ""
-Explanation: We have many possible scenarios, and all lead to the same answer. For example:
-"abBAcC" --> "aAcC" --> "cC" --> ""
-"abBAcC" --> "abBA" --> "aA" --> ""
-Example 3:
-
-Input: s = "s"
-Output: "s"
-
-
-Constraints:
-
-1 <= s.length <= 100
-s contains only lower and upper case English letters.
+S1 = "0"
+S2 = "011"
+S3 = "0111001"
+S4 = "011100110110001"
+Return the kth bit in Sn. It is guaranteed that k is valid for the given n.
 '''
 
 
@@ -42,23 +19,19 @@ from typing import List
 
 
 class Solution:
-    result = ""
-    def makeGood(self, s: str) -> str:
-        i = 0
-        result = ""
-        while i < len(s) - 1:
-            c = s[i]
-            if (c.islower() and (s[i + 1] == c.upper())) or (c.isupper() and s[i + 1] == c.lower()):
-                s = s[:i] + s[i + 2:]
-                i = 0
-                continue
-            else:
-                i += 1
-        return s
+    def binaryString(self, n):
+        if n == 1:
+            return "0"
+        s_n_minus_1 = self.binaryString(n - 1)
+        return s_n_minus_1 + "1" + "".join([str(1 - int(c)) for c in s_n_minus_1])[::-1]
+
+    def findKthBit(self, n: int, k: int) -> str:
+        return self.binaryString(n)[k-1]
 
 
 solution = Solution()
-assert solution.makeGood("leEeetcode") == "leetcode", "NG: case 1"
-assert solution.makeGood("abBAcC") == "", "NG: case 2"
-assert solution.makeGood("s") == "s", "NG: case 3"
-assert solution.makeGood("Pp") == "", "NG: case 4"
+assert solution.findKthBit(3, 1) == "0", "NG: case 1"
+assert solution.findKthBit(4, 11) == "1", "NG: case 1"
+assert solution.findKthBit(1, 1) == "0", "NG: case 1"
+assert solution.findKthBit(2, 1) == "0", "NG: case 1"
+
