@@ -43,12 +43,12 @@ class Solution:
         return dummy_head.next
 
     def create_linkedList(self, array) -> ListNode:
-        head = ListNode(array[0])
-        current = head
-        for v in array[1:]:
+        dummy_head = ListNode(-1)
+        current = dummy_head
+        for v in array:
             current.next = ListNode(v)
             current = current.next
-        return head
+        return dummy_head.next
 
     def print_all(self, head: ListNode) -> None:
         print("---print_all---")
@@ -60,4 +60,5 @@ class Solution:
 
 solution = Solution()
 l = solution.create_linkedList([1,2,3,3,4,4,5])
-solution.print_all(l)
+result = solution.deleteDuplicates(l)
+solution.print_all(result)
