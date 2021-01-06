@@ -61,37 +61,3 @@ class Solution:
 solution = Solution()
 l = solution.create_linkedList([1,2,3,3,4,4,5])
 solution.print_all(l)
-
-res = solution.deleteDuplicates2(l)
-solution.print_all(res)
-
-
-# n1 = ListNode(1)
-# n2 = ListNode(1)
-# n3 = ListNode(1)
-# n4 = ListNode(2)
-# n5 = ListNode(3)
-# n1.next = n2
-# n2.next = n3
-# n3.next = n4
-# n4.next = n5
-#
-# res = solution.deleteDuplicates(n1)
-# solution.print_all(res)
-#
-#
-#
-# n1 = ListNode(1)
-# n2 = ListNode(2)
-# n3 = ListNode(3)
-# n4 = ListNode(3)
-# n5 = ListNode(4)
-# n6 = ListNode(4)
-# n7 = ListNode(5)
-#
-# n1.next = n2
-# n2.next = n3
-# n3.next = n4
-# n4.next = n5
-# res = solution.deleteDuplicates(n1)
-# solution.print_all(res)
