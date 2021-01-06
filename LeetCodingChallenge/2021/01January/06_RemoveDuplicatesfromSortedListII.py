@@ -57,25 +57,6 @@ class Solution:
             print("val: ", current.val)
             current = current.next
 
-    def deleteDuplicates2(self, head: ListNode) -> ListNode:
-        dummy_head = ListNode(-1)
-
-        start = head
-        dummy = dummy_head
-        while head is not None:
-            start = head
-            count = 0
-            while head is not None and head.val == start.val:
-                head = head.next
-                count += 1
-            if count > 1:
-                start = head
-            else:
-                dummy.next = start
-                dummy = dummy.next
-        dummy.next = None
-        return dummy_head.next
-
 
 solution = Solution()
 l = solution.create_linkedList([1,2,3,3,4,4,5])
