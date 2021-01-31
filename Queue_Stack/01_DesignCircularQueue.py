@@ -44,7 +44,7 @@ Follow up: Could you solve the problem without using the built-in queue?
 class MyCircularQueue:
 
     def __init__(self, k: int):
-        self.queue = [-1 for _ in range(k)]
+        self.queue = [-1] * k
         self.maxsize = len(self.queue)
         self.size = 0
         self.head = 0
@@ -54,10 +54,7 @@ class MyCircularQueue:
         if self.isFull():
             return False
 
-        if self.tail >= self.maxsize - 1:
-            self.tail = 0
-        else:
-            self.tail += 1
+        self.tail = (self.tail + 1) % self.maxsize
         self.queue[self.tail] = value
         self.size += 1
         return True
@@ -65,10 +62,7 @@ class MyCircularQueue:
     def deQueue(self) -> bool:
         if self.isEmpty():
             return False
-        if self.head >= self.maxsize - 1:
-            self.head = 0
-        else:
-            self.head += 1
+        self.head = (self.head + 1) % self.maxsize
         self.size -= 1
         return True
 
@@ -83,10 +77,10 @@ class MyCircularQueue:
         return self.queue[self.tail]
 
     def isEmpty(self) -> bool:
-        return True if self.size <= 0 else False
+        return self.size <= 0
 
     def isFull(self) -> bool:
-        return True if self.size >= self.maxsize else False
+        return self.size >= self.maxsize
 
 
 # Your MyCircularQueue object will be instantiated and called as such:
