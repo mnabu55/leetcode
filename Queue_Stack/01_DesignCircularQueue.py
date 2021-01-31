@@ -83,7 +83,7 @@ class MyCircularQueue:
         return self.queue[self.tail]
 
     def isEmpty(self) -> bool:
-        return True if self.size == 0 else False
+        return True if self.size <= 0 else False
 
     def isFull(self) -> bool:
         return True if self.size >= self.maxsize else False
