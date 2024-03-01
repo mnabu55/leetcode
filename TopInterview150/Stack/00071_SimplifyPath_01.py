@@ -1,7 +1,7 @@
 
 
 class Solution:
-    def simplifyPath(self, path: str) -> str:
+    def simplifyPath_my(self, path: str) -> str:
         split_path = path.split("/")
 
         stack = []
@@ -24,8 +24,19 @@ class Solution:
         return "/" + "/".join(stack)
 
 
+    def simplifyPath(self, path: str) -> str:
+        # 模範解答
+        s = path.split('/')
+
+        stack = []
+        for i in s:
+            if stack and i=='..':
+                stack.pop()
+            elif i not in ['.', "..", ""]:
+                stack.append(i)
+        return '/'+'/'.join(stack)
+
 
 solution = Solution()
 assert solution.simplifyPath("/home/") == "/home"
 assert solution.simplifyPath("/../") == "/"
-
