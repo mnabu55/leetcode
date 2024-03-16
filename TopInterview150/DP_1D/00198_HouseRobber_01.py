@@ -18,6 +18,13 @@ class Solution:
 
 
 if __name__ == "__main__":
-    nums = [1, 2, 3, 1]
     solution = Solution()
-    print(solution.rob(nums))
+    
+    nums = [1, 2, 3, 1]
+    assert solution.rob(nums) == 4
+
+    nums = [2, 7, 9, 3, 1]
+    assert solution.rob(nums) == 12
+
+    nums = [2, 1, 1, 2]
+    assert solution.rob(nums) == 4
