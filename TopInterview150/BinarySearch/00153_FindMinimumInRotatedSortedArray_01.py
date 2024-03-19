@@ -7,11 +7,17 @@ class Solution:
 
         while left < right:
             mid = left + (right - left) // 2
+
+            # if mid_value > right_value, part [mid, right] of array is pivotted.
+            # so minimum value must be existed after (mid + 1) position
             if nums[mid] > nums[right]:
                 left = mid + 1
+
+            # if mid_value < right_value, part [mid, right] of array is sorted.
+            # so minimum value must be existed equal than smaller than mid
             elif nums[mid] < nums[right]:
                 right = mid
-        
+
         return nums[left]        
 
 
