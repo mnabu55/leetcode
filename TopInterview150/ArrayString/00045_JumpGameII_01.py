@@ -68,21 +68,21 @@ class Solution:
 if __name__ == '__main__':
     solution = Solution()
 
-    # nums = [2,3,1,1,4]
-    # expected = 2
-    # assert solution.jump(nums) == expected
+    nums = [2,3,1,1,4]
+    expected = 2
+    assert solution.jump(nums) == expected
 
-    # nums = [2,3,0,1,4]
-    # expected = 2
-    # assert solution.jump(nums) == expected
+    nums = [2,3,0,1,4]
+    expected = 2
+    assert solution.jump(nums) == expected
 
-    # nums = [1,2,0,1]
-    # expected = 2
-    # assert solution.jump(nums) == expected
+    nums = [1,2,0,1]
+    expected = 2
+    assert solution.jump(nums) == expected
 
-    # nums = [1,2]
-    # expected = 1
-    # assert solution.jump(nums) == expected
+    nums = [1,2]
+    expected = 1
+    assert solution.jump(nums) == expected
 
     nums = [1,2,1,1,1,1]
     expected = 4
